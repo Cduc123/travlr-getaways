@@ -1,0 +1,12 @@
+<h1>{{pageHeader.title}}</h1>
+<p>{{pageHeader.strapline}}</p>
+
+<ul>
+  {{#each trips}}
+    <li>
+      <h2>{{name}}</h2>
+      <img src="/{{image}}" alt="{{name}}">
+      <p>{{description}}</p>
+    </li>
+  {{/each}}
+</ul>

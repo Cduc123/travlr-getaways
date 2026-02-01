@@ -1,15 +1,23 @@
+const fs = require('fs');
+const path = require('path');
+
+// Correct path to JSON model
+const tripsFile = path.join(__dirname, '../../data/trips.json');
+
+// Helper function to read JSON
+const getTrips = () => {
+  const data = fs.readFileSync(tripsFile, 'utf-8');
+  return JSON.parse(data);
+};
+
 const travelList = (req, res) => {
-  res.render('travel-list', {
+  res.render('travel', {
     title: 'Travlr Getaways',
     pageHeader: {
       title: 'Travlr Getaways',
       strapline: 'Enjoy your dream vacation with us!'
     },
-    trips: [
-      { destination: 'Hawaii', duration: '7 nights', price: '$1,200' },
-      { destination: 'Bali', duration: '5 nights', price: '$950' },
-      { destination: 'Paris', duration: '6 nights', price: '$1,300' }
-    ]
+    trips: getTrips()
   });
 };
 

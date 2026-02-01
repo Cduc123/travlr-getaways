@@ -1,0 +1,17 @@
+[
+  {
+    "destination": "Hawaii",
+    "duration": "7 nights",
+    "price": "$1,200"
+  },
+  {
+    "destination": "Bali",
+    "duration": "5 nights",
+    "price": "$950"
+  },
+  {
+    "destination": "Paris",
+    "duration": "6 nights",
+    "price": "$1,300"
+  }
+]
