@@ -1,3 +1,4 @@
+require('./app_api/models/db');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -14,6 +15,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Register routes
 const travelRouter = require('./app_server/routes/travel');
 app.use('/', travelRouter);
+const tripsRouter = require('./app_api/routes/trips');
+app.use('/api', tripsRouter);
+
 
 // Start the server
 app.listen(PORT, () => {
