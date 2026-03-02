@@ -1,17 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-// Local Trip interface to avoid depending on external model file
-export interface Trip {
-  id?: string;
-  title?: string;
-  description?: string;
-  startDate?: string;
-  endDate?: string;
-  location?: string;
-  [key: string]: any;
-}
+import { Trip } from '../models/trip.model';
 
 @Injectable({
   providedIn: 'root'

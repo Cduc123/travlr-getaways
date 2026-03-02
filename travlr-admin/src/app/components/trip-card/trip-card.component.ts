@@ -14,7 +14,7 @@ export class TripCardComponent {
   @Input() trip!: Trip;
   @Output() deleteEvent = new EventEmitter<string>();
 
-  deleteTrip() {
+  deleteTrip(): void {
     if (this.trip._id) {
       this.deleteEvent.emit(this.trip._id);
     }

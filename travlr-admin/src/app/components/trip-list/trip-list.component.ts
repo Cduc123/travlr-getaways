@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TripDataService } from '../../services/trip-data.service';
-import { Trip } from '../../models/trip';
-import { TripCardC } from '../trip-card/trip-card.component';
+
+import { TripDataService } from '../../services/trip-data';
+import { Trip } from '../../models/trip.model';
+import { TripCardComponent } from '../trip-card/trip-card.component';
 
 @Component({
   selector: 'app-trip-list',
@@ -21,15 +22,17 @@ export class TripListComponent implements OnInit {
     this.loadTrips();
   }
 
-  loadTrips() {
-    this.tripService.getTrips().subscribe(data => {
-      this.trips = data;
+  loadTrips(): void {
+    this.tripService.getTrips().subscribe({
+      next: (data) => this.trips = data,
+      error: (err) => console.error(err)
     });
   }
 
-  deleteTrip(id: string) {
-    this.tripService.deleteTrip(id).subscribe(() => {
-      this.loadTrips();
+  deleteTrip(id: string): void {
+    this.tripService.deleteTrip(id).subscribe({
+      next: () => this.loadTrips(),
+      error: (err) => console.error(err)
     });
   }
 }

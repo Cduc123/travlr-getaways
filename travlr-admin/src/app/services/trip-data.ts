@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trip } from '../models/trip.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
