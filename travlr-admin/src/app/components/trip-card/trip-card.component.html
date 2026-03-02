@@ -1,0 +1,19 @@
+<div class="col-md-4">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ trip.destination }}</h5>
+      <p>{{ trip.duration }}</p>
+      <p>{{ trip.price }}</p>
+
+      <button class="btn btn-warning me-2"
+              [routerLink]="['/edit', trip._id]">
+        Edit
+      </button>
+
+      <button class="btn btn-danger"
+              (click)="deleteTrip()">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,15 @@
+require('./app_api/models/db');
+
 const express = require('express');
 const path = require('path');
-const app = express();
+const cors = require('cors');
+
+const app = express();   // MUST come before app.use()
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,6 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Register routes
 const travelRouter = require('./app_server/routes/travel');
 app.use('/', travelRouter);
+
+const tripsRouter = require('./app_api/routes/trips');
+app.use('/api', tripsRouter);
 
 // Start the server
 app.listen(PORT, () => {
