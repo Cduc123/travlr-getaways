@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Gale Reef",
+    "description": "Sed et augue lorem. In sit amet placerat arcu.",
+    "image": "images/reef1.jpg"
+  },
+  {
+    "name": "Dawson’s Reef",
+    "description": "Integer magna leo, posuere et dignissim vitae.",
+    "image": "images/reef2.jpg"
+  },
+  {
+    "name": "Claire’s Reef",
+    "description": "Donec sed felis risus. Nulla facilisi.",
+    "image": "images/reef3.jpg"
+  },
+
+  { "destination": "Hawaii", "duration": "7 nights", "price": "$1,200" },
+  { "destination": "Bali", "duration": "5 nights", "price": "$950" },
+  { "destination": "Paris", "duration": "6 nights", "price": "$1,300" }
+]
+

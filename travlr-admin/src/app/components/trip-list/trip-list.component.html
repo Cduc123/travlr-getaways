@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <h2>Trips</h2>
+  <button routerLink="/add" class="btn btn-primary mb-3">
+    Add Trip
+  </button>
+
+  <div class="row">
+    <app-trip-card
+      *ngFor="let trip of trips"
+      [trip]="trip"
+      (deleteEvent)="deleteTrip($event)">
+    </app-trip-card>
+  </div>
+</div>
