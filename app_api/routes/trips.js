@@ -1,3 +1,4 @@
+const authenticate = require('../middleware/auth');
 const express = require('express');
 const router = express.Router();
 const ctrlTrips = require('../controllers/trips');
@@ -9,12 +10,12 @@ router.get('/trips', ctrlTrips.tripsList);
 router.get('/trips/:tripId', ctrlTrips.tripsFindById);
 
 // POST create trip
-router.post('/trips', ctrlTrips.tripsCreate);
+router.post('/trips', authenticate, ctrlTrips.tripsAddOne);
 
 // PUT update trip
-router.put('/trips/:tripId', ctrlTrips.tripsUpdate);
+router.put('/trips/:tripId', authenticate, ctrlTrips.tripsUpdateOne);
 
 // DELETE trip
-router.delete('/trips/:tripId', ctrlTrips.tripsDelete);
+router.delete('/trips/:tripId', authenticate, ctrlTrips.tripsDeleteOne);
 
 module.exports = router;

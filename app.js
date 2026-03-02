@@ -3,8 +3,9 @@ require('./app_api/models/db');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-
 const app = express();   // MUST come before app.use()
+const authRouter = require('./app_api/routes/auth');
+app.use('/api', authRouter);
 
 // Middleware
 app.use(cors());

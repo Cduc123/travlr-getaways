@@ -18,3 +18,4 @@ mongoose.connection.on('disconnected', () => {
 
 // Load models
 require('./trips');
+require('./users');

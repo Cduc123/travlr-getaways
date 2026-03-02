@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trip } from '../models/trip.model';
-
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,18 @@ export class TripDataService {
 
   constructor(private http: HttpClient) {}
 
+  // 🔐 Create headers with JWT
+  private getAuthHeaders(): { headers: HttpHeaders } {
+    const token = localStorage.getItem('token');
+
+    return {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      })
+    };
+  }
+
+  // Public GET (leave open if required)
   getTrips(): Observable<Trip[]> {
     return this.http.get<Trip[]>(this.apiUrl);
   }
@@ -21,15 +32,27 @@ export class TripDataService {
     return this.http.get<Trip>(`${this.apiUrl}/${id}`);
   }
 
+  // 🔐 Protected Routes
   addTrip(trip: Trip): Observable<Trip> {
-    return this.http.post<Trip>(this.apiUrl, trip);
+    return this.http.post<Trip>(
+      this.apiUrl,
+      trip,
+      this.getAuthHeaders()
+    );
   }
 
   updateTrip(id: string, trip: Trip): Observable<Trip> {
-    return this.http.put<Trip>(`${this.apiUrl}/${id}`, trip);
+    return this.http.put<Trip>(
+      `${this.apiUrl}/${id}`,
+      trip,
+      this.getAuthHeaders()
+    );
   }
 
   deleteTrip(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(
+      `${this.apiUrl}/${id}`,
+      this.getAuthHeaders()
+    );
   }
 }
